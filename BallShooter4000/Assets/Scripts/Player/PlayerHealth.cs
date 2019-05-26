@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
+   
 
 
     void Awake ()
@@ -75,7 +76,7 @@ public class PlayerHealth : MonoBehaviour
         playerAudio.clip = deathClip;
         playerAudio.Play ();
 
-        playerMovement.enabled = false;
+      
         playerShooting.enabled = false;
     }
 
