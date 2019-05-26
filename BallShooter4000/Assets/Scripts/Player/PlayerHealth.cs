@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
     AudioSource playerAudio;
     PlayerMovement playerMovement;
     PlayerShooting playerShooting;
+    BallMovement ballMovement;
+    Explosion ballExplosion;
     bool isDead;
     bool damaged;
    
@@ -29,7 +31,9 @@ public class PlayerHealth : MonoBehaviour
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
-        playerShooting = GetComponentInChildren <PlayerShooting> ();
+        playerShooting = GetComponentInChildren <PlayerShooting> (); 
+        ballMovement = GameObject.Find("Sphere").GetComponent<BallMovement>();
+        ballExplosion = GameObject.Find("Sphere").GetComponent<Explosion>();
         currentHealth = startingHealth;
     }
 
@@ -76,7 +80,8 @@ public class PlayerHealth : MonoBehaviour
         playerAudio.clip = deathClip;
         playerAudio.Play ();
 
-      
+        ballMovement.enabled = false;
+        ballExplosion.enabled = false;
         playerShooting.enabled = false;
     }
 
