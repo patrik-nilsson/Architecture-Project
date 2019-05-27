@@ -43,6 +43,16 @@ public class BallMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
+        if (!IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.down * jumpForce, ForceMode.Impulse);
+        }
+
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rb.AddForce(movement * speed * 15);
+        }
     }
 
     private bool IsGrounded()
